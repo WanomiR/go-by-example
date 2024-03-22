@@ -13,12 +13,14 @@ func main() {
 	sliceInt := generateSliceInt(42, 5)
 
 	fmt.Println(sliceInt)
+	fmt.Println(heapSort(sliceInt))
 	fmt.Println(Average(sliceInt))
 	fmt.Println(Sum(sliceInt))
 	fmt.Println(Reverse(sliceInt))
 
 	sliceFloat := generateSliceFloat(42, 5)
 	fmt.Println(sliceFloat)
+	fmt.Println(heapSort(sliceFloat))
 	fmt.Println(Average(sliceFloat))
 	fmt.Println(Sum(sliceFloat))
 	fmt.Println(Reverse(sliceFloat))
@@ -71,5 +73,45 @@ func generateSliceFloat(seed int64, n int) []float64 {
 	for i := 0; i < n; i++ {
 		slice = append(slice, rand.NormFloat64()*1.5)
 	}
+	return slice
+}
+
+func heapSort[T Number](slice []T) []T {
+	var heapify func(slice []T, n, i int)
+	n := len(slice)
+
+	heapify = func(slice []T, n, i int) {
+		var largest, left, right int
+
+		largest = i
+		left = 2*i + 1
+		right = 2*i + 2
+
+		if (left < n) && (slice[left] > slice[largest]) {
+			largest = left
+		}
+
+		if (right < n) && (slice[right] > slice[largest]) {
+			largest = right
+		}
+
+		if largest != i {
+			slice[i], slice[largest] = slice[largest], slice[i]
+
+			heapify(slice, n, largest)
+		}
+	}
+
+	// build max heap
+	for i := n/2 - 1; i >= 0; i-- {
+		heapify(slice, n, i)
+	}
+
+	// heap sort
+	for i := n - 1; i >= 0; i-- {
+		slice[0], slice[i] = slice[i], slice[0]
+		heapify(slice, i, 0)
+	}
+
 	return slice
 }
