@@ -56,6 +56,20 @@ func Reverse[T Number](slice []T) []T {
 	return reversed
 }
 
+func slicesAreEqual[T Number](slice1, slice2 []T) bool {
+	if len(slice1) != len(slice2) {
+		return false
+	}
+
+	for i, v := range slice1 {
+		if v != slice2[i] {
+			return false
+		}
+	}
+
+	return true
+}
+
 func generateSliceInt(seed int64, n int) []int {
 	rand.Seed(seed)
 	slice := make([]int, 0, n)
