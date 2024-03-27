@@ -9,6 +9,8 @@ type Number interface {
 	int | int32 | int64 | float32 | float64
 }
 
+type Map map[string]int
+
 func main() {
 	sliceInt := generateSliceInt(42, 5)
 
@@ -67,6 +69,18 @@ func slicesAreEqual[T Number](slice1, slice2 []T) bool {
 		}
 	}
 
+	return true
+}
+
+func mapsAreEqual[T Map](map1, map2 T) bool {
+	if len(map1) != len(map2) {
+		return false
+	}
+	for k, v := range map1 {
+		if v != map2[k] {
+			return false
+		}
+	}
 	return true
 }
 
