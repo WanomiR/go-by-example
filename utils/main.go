@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"strings"
 )
 
 type Number interface {
@@ -142,4 +143,14 @@ func heapSort[T Number](slice []T) []T {
 	}
 
 	return slice
+}
+
+func retrieveDirPath(filePath string) string {
+	subdirs := strings.Split(filePath, "/")
+
+	if len(subdirs) < 2 {
+		return "./"
+	}
+
+	return strings.Join(subdirs[:len(subdirs)-1], "/")
 }
