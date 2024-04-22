@@ -1,3 +1,3 @@
-module playground
+module sorting
 
 go 1.19

@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
-	"playground/sorting"
+	"sorting/sorting"
 )
 
 func main() {
