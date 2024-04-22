@@ -2,6 +2,11 @@ package sorting
 
 func SelectionSort(arr []int) []int {
 	n := len(arr)
+
+	if n < 2 {
+		return arr
+	}
+
 	for i := 0; i < n-1; i++ {
 		minIdx := i
 		for j := i + 1; j < n; j++ {
