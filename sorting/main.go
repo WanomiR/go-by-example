@@ -14,7 +14,7 @@ func main() {
 	}
 	fmt.Println(arr)
 
-	sortedArr := sorting.InsertionSort(arr)
+	sortedArr := sorting.QuickSort(arr, 0, len(arr)-1)
 
 	fmt.Println(sortedArr)
 }

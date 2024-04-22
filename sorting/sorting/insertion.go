@@ -1,7 +1,5 @@
 package sorting
 
-import "fmt"
-
 func InsertionSort(arr []int) []int {
 	n := len(arr)
 
@@ -16,7 +14,6 @@ func InsertionSort(arr []int) []int {
 			arr[j+1] = arr[j]
 			j--
 		}
-		fmt.Println(j)
 		arr[j+1] = key
 	}
 
