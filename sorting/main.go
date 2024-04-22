@@ -14,7 +14,7 @@ func main() {
 	}
 	fmt.Println(arr)
 
-	sortedArr := sorting.QuickSort(arr, 0, len(arr)-1)
+	sortedArr := sorting.MergeSort(arr)
 
 	fmt.Println(sortedArr)
 }
