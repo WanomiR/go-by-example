@@ -13,21 +13,29 @@ type Number interface {
 type Map map[string]int
 
 func main() {
-	sliceInt := generateSliceInt(42, 5)
+	words := []string{"hello", "world", "nice", "world", "day", "hello", "fuck off"}
+	fmt.Println(countUnique(words))
+}
 
-	fmt.Println(sliceInt)
-	fmt.Println(heapSort(sliceInt))
-	fmt.Println(Average(sliceInt))
-	fmt.Println(Sum(sliceInt))
-	fmt.Println(Reverse(sliceInt))
+func countUnique[T comparable](arr []T) int {
+	if len(arr) < 2 {
+		return len(arr)
+	}
 
-	sliceFloat := generateSliceFloat(42, 5)
-	fmt.Println(sliceFloat)
-	fmt.Println(heapSort(sliceFloat))
-	fmt.Println(Average(sliceFloat))
-	fmt.Println(Sum(sliceFloat))
-	fmt.Println(Reverse(sliceFloat))
-
+	unique := 1
+	for i := 1; i < len(arr); i++ {
+		j := 0
+		for j < i {
+			if arr[i] == arr[j] {
+				break
+			}
+			j++
+		}
+		if i == j {
+			unique++
+		}
+	}
+	return unique
 }
 
 func Average[T Number](slice []T) (avg float64) {
