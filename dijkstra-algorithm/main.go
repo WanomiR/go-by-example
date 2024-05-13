@@ -37,10 +37,10 @@ func main() {
 	g.parents["a"] = "start"
 	g.parents["b"] = "start"
 
-	fmt.Println(g.WalkGrpah())
+	fmt.Println(g.WalkGraph())
 }
 
-func (g *Graph) WalkGrpah() float64 {
+func (g *Graph) WalkGraph() float64 {
 	currentNode := g.FindClosestNode()
 
 	for currentNode != "" {
