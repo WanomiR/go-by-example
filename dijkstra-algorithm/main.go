@@ -9,7 +9,7 @@ type node map[string]float64
 
 type Grapher interface {
 	FindClosestNode(string) string
-	WalkGrpah() float64
+	WalkGraph() float64
 }
 
 type Graph struct {
