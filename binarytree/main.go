@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"math/rand"
-	"time"
 )
 
 type Tree struct {
@@ -17,6 +16,23 @@ func main() {
 	fmt.Println("Root node value: ", tree.Value)
 	traverse(tree)
 	fmt.Println("Max depth: ", findMaxDepth(tree))
+	fmt.Println("Sum of grater than: ", sumOfGreaterThan(tree, 0, 8))
+}
+
+func sumOfGreaterThan(root *Tree, sum, key int) int {
+	if root == nil {
+		return 0
+	}
+
+	localSum := sum
+	if root.Value > key {
+		sum += root.Value
+	}
+
+	sum += sumOfGreaterThan(root.Left, localSum, key)
+	sum += sumOfGreaterThan(root.Right, localSum, key)
+
+	return sum
 }
 
 func findMaxDepth(root *Tree) int {
@@ -94,7 +110,8 @@ func insert(t *Tree, v int) *Tree {
 
 func create(n int) *Tree {
 	var t *Tree
-	rand.Seed(time.Now().Unix())
+	//rand.Seed(time.Now().Unix())
+	rand.Seed(42)
 
 	for i := 0; i < 2*n; i++ {
 		val := rand.Intn(n * 2)
